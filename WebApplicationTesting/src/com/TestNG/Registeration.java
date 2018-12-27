@@ -1,0 +1,52 @@
+package com.TestNG;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class Registeration 
+{
+	FirefoxDriver driver;
+	
+	@BeforeTest
+	public void Setup()
+	{
+		driver= new FirefoxDriver();
+		driver.get("http://www.newtours.demoaut.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	@Test(priority=0)
+	public void login()
+	{
+		driver.findElementByXPath("Register").click();
+	}
+	@Test(priority=1)
+	public void User_registration()
+	{
+		
+	    driver.findElementByName("firstName").sendKeys("Pooja");
+	    driver.findElementByName("lastName").sendKeys("Kale");
+	    driver.findElementByName("phone").sendKeys("12234567888");
+	    driver.findElementByName("userName").sendKeys("kale.pooja@gmail.com");
+	    driver.findElementByName("address1").sendKeys("kalyan east");
+	    driver.findElementByName("City").sendKeys("Mumbai");
+	    driver.findElementByName("State").sendKeys("Maharashtra");
+	    driver.findElementByName("Postal Code").sendKeys("440027");
+	    driver.findElementByName("Country").sendKeys("India");
+	    driver.findElementById("email").sendKeys("Poo");
+	    driver.findElementByName("password").sendKeys("abc123");
+	    driver.findElementByName("confirmpassword").sendKeys("abc123");
+	}
+	@AfterTest
+	public void tearDown()
+	{
+		driver.quit();
+	}
+	
+	
+	
+}
